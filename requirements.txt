@@ -1,0 +1,44 @@
+# FastAPI Foundation - Python Dependencies
+# 使用 pip install -r requirements.txt 安裝
+# 推薦使用 uv: uv pip install -r requirements.txt
+
+# ===== FastAPI 核心 =====
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+
+# ===== 資料驗證 =====
+pydantic>=2.10.0
+pydantic-settings>=2.6.0
+email-validator>=2.2.0
+
+# ===== 資料庫 - SQL =====
+sqlalchemy>=2.0.0
+alembic>=1.14.0
+aiosqlite>=0.20.0          # SQLite 非同步支援
+asyncpg>=0.30.0            # PostgreSQL 非同步支援
+
+# ===== 資料庫 - NoSQL =====
+motor>=3.6.0               # MongoDB 非同步支援
+pymongo>=4.10.0
+
+# ===== 認證與安全 =====
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.17   # 表單與檔案上傳
+
+# ===== HTTP 客戶端 =====
+httpx>=0.28.0
+
+# ===== Jupyter 教學環境 =====
+jupyter>=1.1.0
+notebook>=7.3.0
+ipykernel>=6.29.0
+
+# ===== 測試 (開發用) =====
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+pytest-cov>=6.0.0
+
+# ===== 程式碼品質 (開發用) =====
+ruff>=0.8.0
+mypy>=1.13.0

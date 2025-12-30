@@ -35,24 +35,52 @@ git clone https://github.com/yourusername/fastapi_foundation.git
 cd fastapi_foundation
 ```
 
-### 2. 建立虛擬環境
-```bash
-python -m venv venv
+### 2. 安裝 uv (推薦的 Python 套件管理器)
 
-# Windows
-venv\Scripts\activate
+uv 是一個極快速的 Python 套件管理器，比 pip 快 10-100 倍！
+
+```bash
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 # macOS/Linux
-source venv/bin/activate
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### 3. 安裝依賴
+### 3. 建立虛擬環境並安裝依賴
 ```bash
+# 使用 uv 建立虛擬環境並安裝依賴 (一個指令搞定！)
+uv sync
+
+# 或者分開執行：
+uv venv                    # 建立虛擬環境
+uv pip install -r requirements.txt  # 安裝依賴
+```
+
+<details>
+<summary>📌 傳統方式 (使用 pip)</summary>
+
+```bash
+# 建立虛擬環境
+python -m venv venv
+
+# 啟動虛擬環境
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+# 安裝依賴
 pip install -r requirements.txt
 ```
+</details>
 
 ### 4. 啟動 Jupyter Notebook
 ```bash
+# 使用 uv 執行
+uv run jupyter notebook
+
+# 或啟動虛擬環境後執行
 jupyter notebook
 ```
 
@@ -65,7 +93,8 @@ jupyter notebook
 fastapi_foundation/
 ├── README.md              # 專案說明（本檔案）
 ├── CLAUDE.md              # Claude Code 協作規則
-├── requirements.txt       # Python 依賴套件
+├── pyproject.toml         # 專案配置與依賴 (uv 使用)
+├── requirements.txt       # Python 依賴套件 (pip 相容)
 ├── notebooks/             # 📓 Jupyter 教學章節
 │   ├── 01_intro/          # 第一章：FastAPI 入門
 │   ├── 02_basics/         # 第二章：基礎概念
@@ -90,9 +119,18 @@ fastapi_foundation/
 ## 🛠️ 開發環境需求
 
 - Python 3.9+
-- pip (Python 套件管理器)
+- [uv](https://docs.astral.sh/uv/) (推薦) 或 pip
 - Jupyter Notebook
 - Git
+
+### 為什麼推薦 uv？
+
+| 特性 | uv | pip |
+|------|-----|-----|
+| 安裝速度 | ⚡ 極快 (10-100x) | 🐢 較慢 |
+| 依賴解析 | ✅ 更精確 | ⚠️ 可能有衝突 |
+| 虛擬環境 | ✅ 內建支援 | ❌ 需另外處理 |
+| 專案管理 | ✅ 完整支援 | ❌ 需搭配其他工具 |
 
 ### 主要依賴套件
 
@@ -106,6 +144,7 @@ passlib[bcrypt]
 python-multipart
 pytest
 httpx
+jupyter
 ```
 
 ## 📖 如何使用本教材
@@ -140,6 +179,7 @@ httpx
 ## 🙏 致謝
 
 - [FastAPI](https://fastapi.tiangolo.com/) - 現代、快速的 Python Web 框架
+- [uv](https://docs.astral.sh/uv/) - 極快速的 Python 套件管理器
 - [Pydantic](https://pydantic.dev/) - 資料驗證庫
 - [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL 工具包
 - 所有貢獻者和學習者
